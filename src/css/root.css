@@ -16,4 +16,5 @@
 
 .pageContent {
   grid-area: pageContent;
+  background-color: var(--bg);
 }

@@ -44,5 +44,5 @@
 }
 
 .svgButton:hover {
-  color: var(--text-hover);
+  color: var(--text-muted);
 }

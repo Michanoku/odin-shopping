@@ -10,6 +10,7 @@
   justify-content: start;
   align-items: center;
   gap: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
   @media screen and (min-width: 992px) {
     /* Desktop */
     width: 80%;
@@ -17,8 +18,19 @@
   }
 }
 
+.search:hover {
+  border-color: var(--text-muted);
+}
+
+.search:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-bg);
+}
+
 .searchBar {
   font-size: 1.25rem;
+  color: var(--text);
+  caret-color: var(--text);
   width: 100%;
   border: none;
   background: transparent;

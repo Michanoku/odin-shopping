@@ -2,6 +2,11 @@
 .sideBar {
   background-color: var(--bg-bars);
   border-right: 1px solid var(--border);
+  display: grid;
+  grid-template-rows: 1fr auto;
+  grid-template-areas: "links" "themeButton";
+  padding: 0.75rem 1rem;
+
   /* Mobile */
   position: absolute;
   top: 7.75rem;
@@ -25,4 +30,16 @@
 .sideBar.open {
   opacity: 1;
   transform: translateX(0);
+}
+
+.themeButton {
+  margin-right: auto;
+  color: var(--text);
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.themeButton:hover {
+  color: var(--text-muted);
 }
