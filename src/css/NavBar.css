@@ -32,8 +32,29 @@
   grid-area: navTitle;
 }
 
-.cartButton {
+.cartLink {
   grid-area: cartButton;
+  padding: 0.5rem;
+  position: relative;
+}
+
+.itemCounter {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1.325rem;
+  height: 1.325rem;
+  font-size: 1rem;
+  border-radius: 50%;
+  background-color: var(--accent);
+  color: var(--text);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.itemCounter.show {
+  display: flex;
 }
 
 .svgButton {

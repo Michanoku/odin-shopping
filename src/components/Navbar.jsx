@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Search from './Search.jsx';
 import '../css/NavBar.css';
 
-export default function NavBar({toggleSideBar}) {
+export default function NavBar({toggleSideBar, counter}) {
 
     return (
         <div className="navBar">
@@ -12,7 +12,7 @@ export default function NavBar({toggleSideBar}) {
             <Search />
             <Link className="cartLink svgButton" to="cart/">
                 <ShoppingCart size={32} />
-                <span className="itemCounter"></span>
+                <span className={`itemCounter ${counter > 0 ? "show" : ""}`}>{counter}</span>
             </Link>
         </div>
     )

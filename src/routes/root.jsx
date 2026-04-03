@@ -13,6 +13,10 @@ export default function Root() {
   const [ theme, setTheme ] = useState(getTheme());
   const [ cart, setCart ] = useState([]);
 
+  function addItem(itemId) {
+    setCart(prev => [...prev, itemId])
+  }
+
   function getTheme() {
     const theme = localStorage.getItem("theme") 
     ? localStorage.getItem("theme") 
@@ -43,7 +47,7 @@ export default function Root() {
         <NavBar toggleSideBar={toggleSideBar} counter={cart.length}/>
         <SideBar isOpen={sideBarOpen} theme={theme} handleSetTheme={handleSetTheme} />
         <div className="pageContent">
-          <Outlet />
+          <Outlet context={addItem}/>
         </div>
     </div>
   );
