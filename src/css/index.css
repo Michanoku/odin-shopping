@@ -3,6 +3,8 @@
   --mono: ui-monospace, Consolas, monospace;
   --text: #1F2937;
   --bg: #F9FAFB;
+  --bg-sidebar: #f3f4f6;
+  --border: #00000014;
   --accent: #6EC4BE;
 
   font-family: var(--sans);
@@ -19,6 +21,8 @@
   :root {
     --text: #e5e7eb;
     --bg: #111827;
+    --bg-sidebar: #1f2937;
+    --border: #ffffff14;
     --accent: #4CB5AE;
   }
 }

@@ -6,9 +6,9 @@ import SideBar from '../components/SideBar.jsx';
 export default function Root() {
   return (
     <div className="rootDiv">
-        {/* Navbar Component */}
-        {/* Sidebar Component */}
-        {/* Page Content (Outlet?) */}
+        <NavBar/>
+        <SideBar/>
+        <div className="pageContent"></div>
     </div>
   );
 }

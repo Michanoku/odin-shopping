@@ -1,7 +1,9 @@
 .rootDiv {
+  width: 100vw;
+  min-height: 100dvh;
   display: grid;
-  grid-template-rows: 2rem 1fr;
-  grid-template-areas: "navBar" "content";
+  grid-template-rows: 3.5rem 1fr;
+  grid-template-areas: "navBar" "pageContent";
   @media screen and (min-width: 992px) {
     /* Desktop */
     grid-template-columns: 1fr 3fr;
@@ -11,6 +13,7 @@
 
 .navBar {
   grid-area: navBar;
+  background-color: var(--accent);
 }
 
 .content {
@@ -19,8 +22,24 @@
 
 .sideBar {
   /* Offcanvas Setup Here */
+  background-color: var(--bg-sidebar);
+  border-right: 1px solid var(--border);
+
+  /* Mobile */
+  opacity: 0;
+  width: 50vw;
+  transform: translateX(-50vw);
+  transition: opacity 0.3s ease-in-out, transform 0.2s ease-in-out;
   @media screen and (min-width: 992px) {
     /* Desktop */
+    opacity: 1;
+    width: 100%;
+    transform: translateX(0);
     grid-area: sideBar;
   }
+}
+
+.sideBar .open {
+  opacity: 1;
+  transform: translateX(0);
 }
