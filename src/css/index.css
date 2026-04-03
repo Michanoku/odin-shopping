@@ -1,0 +1,31 @@
+:root {
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+  --text: #1F2937;
+  --bg: #F9FAFB;
+  --accent: #6EC4BE;
+
+  font-family: var(--sans);
+  font-size: clamp(16px, 1.2vw, 18px);
+  line-height: 1.5;
+
+  color-scheme: light dark;
+
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #e5e7eb;
+    --bg: #111827;
+    --accent: #4CB5AE;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
