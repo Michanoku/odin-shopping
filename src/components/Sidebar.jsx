@@ -1,7 +1,9 @@
-export default function SideBar() {
 
+
+export default function SideBar({isOpen}) {
+    
     return (
-        <div className="sideBar">
+        <div className={`sideBar ${isOpen ? "open" : ""}`}>
 
         </div>
     )
