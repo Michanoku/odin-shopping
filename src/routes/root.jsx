@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import {
-  Outlet,
+  Outlet, 
 } from "react-router-dom";
 
 import '../css/root.css';
@@ -11,6 +11,7 @@ import SideBar from '../components/SideBar.jsx';
 export default function Root() {
   const [ sideBarOpen, setSideBarOpen ] = useState(false);
   const [ theme, setTheme ] = useState(getTheme());
+  const [ cart, setCart ] = useState([]);
 
   function getTheme() {
     const theme = localStorage.getItem("theme") 
@@ -39,7 +40,7 @@ export default function Root() {
 
   return (
     <div className="rootDiv">
-        <NavBar toggleSideBar={toggleSideBar}/>
+        <NavBar toggleSideBar={toggleSideBar} counter={cart.length}/>
         <SideBar isOpen={sideBarOpen} theme={theme} handleSetTheme={handleSetTheme} />
         <div className="pageContent">
           <Outlet />

@@ -1,4 +1,7 @@
-import { Sun, Moon } from 'lucide-react';
+import { Sun, Moon, House, Store } from 'lucide-react';
+import {
+  NavLink,
+} from "react-router-dom";
 import '../css/SideBar.css';
 
 export default function SideBar({isOpen, theme, handleSetTheme}) {
@@ -8,7 +11,34 @@ export default function SideBar({isOpen, theme, handleSetTheme}) {
 
     return (
         <div className={`sideBar ${isOpen ? "open" : ""}`}>
-            <div className="links"></div>
+            <div className="links">
+                <NavLink 
+                    to="/"
+                    className={({ isActive, isPending }) =>
+                      isActive
+                        ? "active"
+                        : isPending
+                        ? "pending"
+                        : ""
+                    }
+                >
+                    <House size={32} />
+                    <span>Home</span>
+                </NavLink>
+                <NavLink 
+                    to="shop/"
+                    className={({ isActive, isPending }) =>
+                      isActive
+                        ? "active"
+                        : isPending
+                        ? "pending"
+                        : ""
+                    }
+                >
+                    <Store size={32} />
+                    <span>Shop</span>
+                </NavLink>
+            </div>
             <button className="themeButton" onClick={() => handleSetTheme()}>
                 <Icon size={32}/>
             </button>
