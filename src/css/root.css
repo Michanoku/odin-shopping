@@ -1,0 +1,26 @@
+.rootDiv {
+  display: grid;
+  grid-template-rows: 2rem 1fr;
+  grid-template-areas: "navBar" "content";
+  @media screen and (min-width: 992px) {
+    /* Desktop */
+    grid-template-columns: 1fr 3fr;
+    grid-template-areas: "navBar navBar" "sideBar pageContent";
+  }
+}
+
+.navBar {
+  grid-area: navBar;
+}
+
+.content {
+  grid-area: pageContent;
+}
+
+.sideBar {
+  /* Offcanvas Setup Here */
+  @media screen and (min-width: 992px) {
+    /* Desktop */
+    grid-area: sideBar;
+  }
+}
