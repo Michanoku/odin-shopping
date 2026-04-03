@@ -1,0 +1,28 @@
+
+.sideBar {
+  background-color: var(--bg-bars);
+  border-right: 1px solid var(--border);
+  /* Mobile */
+  position: absolute;
+  top: 7.75rem;
+  left: 0;
+  opacity: 0;
+  width: 50vw;
+  height: calc(100dvh - 7.75rem);
+  transform: translateX(-50vw);
+  transition: opacity 0.3s ease-in-out, transform 0.2s ease-in-out;
+  @media screen and (min-width: 992px) {
+    /* Desktop */
+    position: static;
+    opacity: 1;
+    width: 100%;
+    height: 100%;
+    transform: translateX(0);
+    grid-area: sideBar;
+  }
+}
+
+.sideBar.open {
+  opacity: 1;
+  transform: translateX(0);
+}

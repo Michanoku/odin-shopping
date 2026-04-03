@@ -1,0 +1,48 @@
+.navBar {
+  grid-area: navBar;
+  background-color: var(--bg-bars);
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 1rem;
+  /* Mobile */
+  display: grid;
+  grid-template-rows: 3rem 2.75rem;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas: "sideBarToggle navTitle cartButton" "search search search";
+  align-items: center;
+  gap: 0.5rem;
+  @media screen and (min-width: 992px) {
+    /* Desktop */
+    grid-template-rows: auto;
+    grid-template-areas: "navTitle search cartButton";
+    gap: 1rem;
+  }
+}
+
+.sideBarToggle {
+  grid-area: sideBarToggle;
+  @media screen and (min-width: 992px) {
+    /* Desktop */
+    display: none;
+  }
+}
+
+.navTitle {
+  transform: translateY(-3px);
+  font-size: 1.5rem;
+  grid-area: navTitle;
+}
+
+.cartButton {
+  grid-area: cartButton;
+}
+
+.svgButton {
+  color: var(--text);
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.svgButton:hover {
+  color: var(--text-hover);
+}
