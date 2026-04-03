@@ -1,9 +1,11 @@
 :root {
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
+  --border-radius: 0.5rem;
   --text: #1F2937;
+  --text-hover: #111827;
   --bg: #F9FAFB;
-  --bg-sidebar: #f3f4f6;
+  --bg-bars: #f3f4f6;
   --border: #00000014;
   --accent: #6EC4BE;
 
@@ -20,8 +22,9 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --text: #e5e7eb;
+    --text-hover: #ffffff;
     --bg: #111827;
-    --bg-sidebar: #1f2937;
+    --bg-bars: #1f2937;
     --border: #ffffff14;
     --accent: #4CB5AE;
   }
