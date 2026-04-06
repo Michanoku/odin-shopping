@@ -16,7 +16,7 @@ export default function Root() {
   }, [items]);
 
   useEffect(() => {
-    /* First, get the items from the API. */
+    // First, get the items from the API. 
     async function fetchItems() {
       try {
         const response = await fetch("https://fakestoreapi.com/products/");

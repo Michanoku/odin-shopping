@@ -1,4 +1,6 @@
 import { CircleArrowLeft, CircleArrowRight } from "lucide-react";
+
+// This card is used within the users cart
 export default function CartCard({ cartItem, item, removeItem, changeAmount }) {
   // Handle the manual change of numbers, but don't allow non numbers
   function handleChange(e) {
@@ -10,7 +12,7 @@ export default function CartCard({ cartItem, item, removeItem, changeAmount }) {
     });
   }
 
-  // When the user leaves the input, make sure the value is valid (1-10)
+  // When the user leaves the input, make sure the value is valid (0-10)
   function handleBlur(e) {
     let inputNumber = e.target.value;
     if (!inputNumber || isNaN(inputNumber)) inputNumber = 0;
@@ -21,6 +23,7 @@ export default function CartCard({ cartItem, item, removeItem, changeAmount }) {
     });
   }
 
+  // Handle amount when increased or decreased by 1 through buttons
   function handleAmount(operation) {
     let newAmount =
       operation === "add"

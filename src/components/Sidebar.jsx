@@ -2,7 +2,9 @@ import { Sun, Moon, House, Store } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import "../css/SideBar.css";
 
+// The sidebar that can be hidden or shown on mobile, always visible on desktop
 export default function SideBar({ isOpen, theme, handleSetTheme, categories }) {
+  // Show the correct icon based on the current theme
   const Icon = theme === "dark" ? Moon : Sun;
 
   // Categories are stored in lower case in the api, so uppercase the first character
@@ -16,16 +18,16 @@ export default function SideBar({ isOpen, theme, handleSetTheme, categories }) {
         <NavLink
           to="/"
           className={`siteLink ${({ isActive, isPending }) =>
-              isActive ? "active" : isPending ? "pending" : ""}`}
-          >
+            isActive ? "active" : isPending ? "pending" : ""}`}
+        >
           <House size={32} />
           <span>Home</span>
         </NavLink>
         <NavLink
           to="shop/"
           className={`siteLink ${({ isActive, isPending }) =>
-              isActive ? "active" : isPending ? "pending" : ""}`}
-          >
+            isActive ? "active" : isPending ? "pending" : ""}`}
+        >
           <Store size={32} />
           <span>Shop</span>
         </NavLink>

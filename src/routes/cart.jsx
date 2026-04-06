@@ -2,6 +2,7 @@ import { useOutletContext } from "react-router-dom";
 import CartCard from "../components/CartCard.jsx";
 import "../css/shop.css";
 
+// The users shopping cart
 export default function Cart() {
   const { items, cart, removeItem, changeAmount } = useOutletContext();
 
@@ -23,8 +24,6 @@ export default function Cart() {
       </div>
     );
   } else {
-    return (
-        <div>You don&lsquo;t have any items in your cart.</div>
-    )
+    return <div className="emptyList">You don&lsquo;t have any items in your cart.</div>;
   }
 }

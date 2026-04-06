@@ -1,8 +1,8 @@
 :root {
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
   --border-radius: 0.5rem;
-  --text: #1F2937;
+  --text: #1f2937;
   --text-muted: #6b7280;
   --bg: #e5e7eb;
   --bg-bars: #f9fafb;
@@ -30,32 +30,32 @@
     --bg: #111827;
     --bg-bars: #1f2937;
     --border: #ffffff14;
-    --accent: #4CB5AE;
+    --accent: #4cb5ae;
     --accent-muted: #4cb5aede;
     --accent-bg: #4cb5ae33;
   }
 }
 
 :root.light {
-  --text: #1F2937;
+  --text: #1f2937;
   --text-muted: #6b7280;
   --bg: #e5e7eb;
   --bg-bars: #f9fafb;
   --border: #00000014;
-  --accent: #6EC4BE;
+  --accent: #6ec4be;
   --accent-muted: #6ec4bede;
   --accent-bg: #6ec4be26;
 }
 
 :root.dark {
-    --text: #e5e7eb;
-    --text-muted: #9ca3af;
-    --bg: #111827;
-    --bg-bars: #1f2937;
-    --border: #ffffff14;
-    --accent: #4CB5AE;
-    --accent-muted: #4cb5aede;
-    --accent-bg: #4cb5ae33;
+  --text: #e5e7eb;
+  --text-muted: #9ca3af;
+  --bg: #111827;
+  --bg-bars: #1f2937;
+  --border: #ffffff14;
+  --accent: #4cb5ae;
+  --accent-muted: #4cb5aede;
+  --accent-bg: #4cb5ae33;
 }
 
 * {
@@ -64,7 +64,8 @@
   padding: 0;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   overflow: hidden;

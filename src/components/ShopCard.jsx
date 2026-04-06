@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { CircleArrowLeft, CircleArrowRight } from "lucide-react";
-export default function ShopCard({ item, addItem}) {
+
+// The ShopCard that is used in the shop areas
+export default function ShopCard({ item, addItem }) {
   const [amount, setAmount] = useState(1);
 
   // Handle the manual change of numbers, but don't allow non numbers
@@ -18,6 +20,7 @@ export default function ShopCard({ item, addItem}) {
     setAmount(inputNumber);
   }
 
+  // Handle amount when increased or decreased by 1 through buttons
   function handleAmount(operation) {
     if (operation === "add") {
       setAmount((prev) => Math.min(10, prev + 1));
@@ -52,7 +55,7 @@ export default function ShopCard({ item, addItem}) {
         </div>
       </div>
       <div className="itemButton">
-      <button onClick={() => addItem({ id: item.id, amount: amount })}>
+        <button onClick={() => addItem({ id: item.id, amount: amount })}>
           Add to cart
         </button>
       </div>
