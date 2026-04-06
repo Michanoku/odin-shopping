@@ -51,6 +51,22 @@ export default function Root() {
     });
   }
 
+  function removeItem(id) {
+    setCart(
+      prev => prev.filter(item => item.id !== id)
+    );
+  }
+
+  function changeAmount(oldItem) {
+    setCart((prev) => {
+      return prev.map((item) =>
+        item.id === oldItem.id
+          ? { ...item, amount: oldItem.amount }
+          : item,
+      );
+    });
+  }
+
   function getTheme() {
     const theme = localStorage.getItem("theme")
       ? localStorage.getItem("theme")
@@ -78,7 +94,7 @@ export default function Root() {
 
   return (
     <div className="rootDiv">
-      <NavBar toggleSideBar={toggleSideBar} counter={cart.length} />
+      <NavBar toggleSideBar={toggleSideBar} counter={cart.filter(item => item.amount > 0).length} />
       <SideBar
         isOpen={sideBarOpen}
         theme={theme}
@@ -86,7 +102,7 @@ export default function Root() {
         categories={categories}
       />
       <div className="pageContent">
-        <Outlet context={{ items, addItem }} />
+        <Outlet context={{ items, addItem, cart, removeItem, changeAmount }} />
       </div>
     </div>
   );

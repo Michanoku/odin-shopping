@@ -8,6 +8,7 @@ import "./css/index.css";
 import Root from "./routes/root.jsx";
 import ErrorPage from "./routes/error-page.jsx";
 import Shop from "./routes/shop.jsx";
+import Cart from "./routes/cart.jsx";
 
 const router = createBrowserRouter([
   {
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
       },
       {
         path: "cart/",
-        element: <div>This is the cart.</div>,
+        element: <Cart />,
       },
     ],
   },
