@@ -12,23 +12,21 @@ export default function Root() {
   const [items, setItems] = useState([]);
 
   const categories = useMemo(() => {
-    return [...new Set(items.map(item => item.category))];
+    return [...new Set(items.map((item) => item.category))];
   }, [items]);
 
   useEffect(() => {
     /* First, get the items from the API. */
     async function fetchItems() {
       try {
-          const response = await fetch(
-            'https://fakestoreapi.com/products/',
-          );
-          if (!response.ok) {
-            throw new Error(`Response status: ${response.status}`);
-          }
-          const result = await response.json();
-          return result;
-        } catch (error) {
-          console.error(error.message);
+        const response = await fetch("https://fakestoreapi.com/products/");
+        if (!response.ok) {
+          throw new Error(`Response status: ${response.status}`);
+        }
+        const result = await response.json();
+        return result;
+      } catch (error) {
+        console.error(error.message);
       }
     }
     fetchItems().then((fetchedItems) => {
@@ -38,8 +36,19 @@ export default function Root() {
     });
   }, []);
 
-  function addItem(itemId) {
-    setCart((prev) => [...prev, itemId]);
+  function addItem(newItem) {
+    setCart((prev) => {
+      const existingItem = prev.find((item) => item.id === newItem.id);
+      if (existingItem) {
+        return prev.map((item) =>
+          item.id === newItem.id
+            ? { ...item, amount: item.amount + newItem.amount }
+            : item,
+        );
+      } else {
+        return [...prev, newItem];
+      }
+    });
   }
 
   function getTheme() {
@@ -77,7 +86,7 @@ export default function Root() {
         categories={categories}
       />
       <div className="pageContent">
-        <Outlet context={{items, addItem}} />
+        <Outlet context={{ items, addItem }} />
       </div>
     </div>
   );

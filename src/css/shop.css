@@ -92,3 +92,15 @@
   justify-content: center;
   align-items: center;
 }
+.itemButton > button {
+    border-radius: var(--border-radius);
+    border: 0;
+    background-color: var(--accent);
+    color: var(--text);
+    font-size: 1.25rem;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+}
+.itemButton > button:hover {
+    background-color: var(--accent-muted);
+}
