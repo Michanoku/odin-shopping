@@ -7,6 +7,7 @@ import {
 import "./css/index.css";
 import Root from "./routes/root.jsx";
 import ErrorPage from "./routes/error-page.jsx";
+import Shop from "./routes/shop.jsx";
 
 const router = createBrowserRouter([
   {
@@ -16,12 +17,8 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <div>This is the index.</div> },
       {
-        path: "shop/",
-        element: <div>This is the shop.</div>,
-      },
-      {
-        path: "shop/:category/",
-        element: <div>This is the category shop.</div>,
+        path: "shop/:category?",
+        element: <Shop />,
       },
       {
         path: "cart/",

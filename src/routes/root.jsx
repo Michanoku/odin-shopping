@@ -74,7 +74,7 @@ export default function Root() {
         categories={categories}
       />
       <div className="pageContent">
-        <Outlet context={addItem} />
+        <Outlet context={{categories, addItem}} />
       </div>
     </div>
   );
