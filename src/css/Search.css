@@ -10,9 +10,14 @@
   justify-content: start;
   align-items: center;
   gap: 1rem;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-  @media screen and (min-width: 992px) {
-    /* Desktop */
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+@media screen and (min-width: 992px) {
+  /* Desktop */
+  .search {
     width: 80%;
     margin: auto;
   }

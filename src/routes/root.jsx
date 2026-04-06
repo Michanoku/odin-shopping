@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Outlet } from "react-router-dom";
 
 import "../css/root.css";
@@ -9,28 +9,31 @@ export default function Root() {
   const [sideBarOpen, setSideBarOpen] = useState(false);
   const [theme, setTheme] = useState(getTheme());
   const [cart, setCart] = useState([]);
-  const [categories, setCategories] = useState([]);
+  const [items, setItems] = useState([]);
+
+  const categories = useMemo(() => {
+    return [...new Set(items.map(item => item.category))];
+  }, [items]);
 
   useEffect(() => {
-    /* First, get the categories from the API. */
-    async function fetchCategories() {
+    /* First, get the items from the API. */
+    async function fetchItems() {
       try {
-        const response = await fetch(
-          "https://fakestoreapi.com/products/categories",
-        );
-        if (!response.ok) {
-          throw new Error(`Response status: ${response.status}`);
-        }
-        const result = await response.json();
-        return result;
-      } catch (error) {
-        console.error(error.message);
-        return null;
+          const response = await fetch(
+            'https://fakestoreapi.com/products/',
+          );
+          if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+          }
+          const result = await response.json();
+          return result;
+        } catch (error) {
+          console.error(error.message);
       }
     }
-    fetchCategories().then((fetchedCategories) => {
-      if (fetchedCategories) {
-        setCategories(fetchedCategories);
+    fetchItems().then((fetchedItems) => {
+      if (fetchedItems) {
+        setItems(fetchedItems);
       }
     });
   }, []);
@@ -74,7 +77,7 @@ export default function Root() {
         categories={categories}
       />
       <div className="pageContent">
-        <Outlet context={{categories, addItem}} />
+        <Outlet context={{items, addItem}} />
       </div>
     </div>
   );

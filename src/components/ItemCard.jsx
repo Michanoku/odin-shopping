@@ -24,9 +24,9 @@ export default function ItemCard({item, addItem}) {
             <div className="itemImage">
                 <img src={item.image}/>
             </div>
-            <div className="itemTitle">{item.title}</div>
+            <div>{item.title}</div>
             <div className="itemCartOptions">
-                <div className="itemPrice">$ {item.price}</div>
+                <div className="itemPrice">${item.price}</div>
                 <div className="itemAmountSelect">
                     <button className="amountButton">
                         <CircleArrowLeft 

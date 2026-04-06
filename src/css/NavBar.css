@@ -10,8 +10,11 @@
   grid-template-areas: "sideBarToggle navTitle cartButton" "search search search";
   align-items: center;
   gap: 0.5rem;
-  @media screen and (min-width: 992px) {
-    /* Desktop */
+}
+
+@media screen and (min-width: 992px) {
+  /* Desktop */
+  .navBar {
     grid-template-rows: auto;
     grid-template-areas: "navTitle search cartButton";
     gap: 1rem;
@@ -20,8 +23,11 @@
 
 .sideBarToggle {
   grid-area: sideBarToggle;
-  @media screen and (min-width: 992px) {
-    /* Desktop */
+}
+
+@media screen and (min-width: 992px) {
+  /* Desktop */
+  .sideBarToggle {
     display: none;
   }
 }

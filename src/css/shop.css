@@ -3,7 +3,19 @@
   display: grid;
   gap: 1rem;
   width: 100%;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 480px) {
+  .itemList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .itemList {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .itemCard {
@@ -32,9 +44,6 @@
   object-fit: contain;
 }
 
-.itemTitle {
-}
-
 .itemCartOptions {
   display: flex;
   align-items: center;
@@ -42,6 +51,9 @@
 }
 
 .itemPrice {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: -3px;
 }
 
 .itemAmountSelect {
@@ -71,7 +83,6 @@
   border: 0;
   cursor: pointer;
 }
-
 .amountButton:hover {
   color: var(--text-muted);
 }
@@ -80,16 +91,4 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-@media (min-width: 480px) {
-  .itemList {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (min-width: 768px) {
-  .itemList {
-    grid-template-columns: repeat(4, 1fr);
-  }
 }
