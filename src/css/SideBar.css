@@ -70,23 +70,43 @@
   padding-left: 4rem;
   padding-right: 1rem;
   margin-bottom: 0.25rem;
-  border-radius: var(--border-radius);
+  border-bottom: 2px solid transparent;
   text-decoration: none;
+}
+
+.links > .categoryLink:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+}
+
+.links > .categoryLink.pending {
+  color: var(--text-muted);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+}
+
+.links > .categoryLink.active {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
 }
 
 .links > .siteLink > span {
   transform: translateY(-2px);
 }
 
-.links > a:hover {
+.links > .siteLink:hover {
   background-color: var(--accent-bg);
 }
 
-.links > a.pending {
+.links > .siteLink.pending {
   background-color: var(--accent-bg);
   color: var(--text-muted);
 }
 
-.links > a.active {
+.links > .siteLink.active {
   background-color: var(--accent);
 }
