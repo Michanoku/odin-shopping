@@ -50,18 +50,31 @@
   width: 100%;
 }
 
-.links > a {
+.links > .siteLink {
   font-size: 1.5rem;
   color: var(--text-color);
   display: flex;
   align-items: center;
   gap: 1rem;
   padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
   border-radius: var(--border-radius);
   text-decoration: none;
 }
 
-.links > a > span {
+.links > .categoryLink {
+  font-size: 1.25rem;
+  color: var(--text-color);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 4rem;
+  padding-right: 1rem;
+  margin-bottom: 0.25rem;
+  border-radius: var(--border-radius);
+  text-decoration: none;
+}
+
+.links > .siteLink > span {
   transform: translateY(-2px);
 }
 
