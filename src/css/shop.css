@@ -1,0 +1,95 @@
+.itemList {
+  padding: 1rem;
+  display: grid;
+  gap: 1rem;
+  width: 100%;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.itemCard {
+  padding: 1rem;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  gap: 1rem;
+  grid-template-rows: auto 1fr auto auto;
+  border-radius: var(--border-radius);
+  background-color: var(--bg-bars);
+}
+
+.itemImage {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.itemImage > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.itemTitle {
+}
+
+.itemCartOptions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.itemPrice {
+}
+
+.itemAmountSelect {
+  display: flex;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.itemAmountSelect > input {
+  background-color: var(--bg);
+  color: var(--text);
+  width: 3rem;
+  padding-left: 0.5rem;
+  appearance: textfield;
+  -moz-appearance: textfield;
+  border-radius: var(--border-radius);
+}
+.itemAmountSelect > input::-webkit-outer-spin-button,
+.itemAmountSelect > input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.amountButton {
+  color: var(--text);
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.amountButton:hover {
+  color: var(--text-muted);
+}
+
+.itemButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 480px) {
+  .itemList {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .itemList {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

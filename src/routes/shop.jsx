@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useOutletContext } from "react-router-dom";
+import ItemCard from "../components/ItemCard.jsx";
+import '../css/shop.css';
 
 export default function Shop() {
   const [items, setItems] = useState([]);
@@ -58,12 +60,12 @@ export default function Shop() {
   }
 
   return (
-    <>
+    <div className="itemList">
       {items
       .filter(item => category === undefined || item.category === category)
       .map(item => (
-        <div key={item.id}>{item.title}</div>
+        <ItemCard key={item.id} item={item} addItem={addItem}/>
       ))}
-    </>
+    </div>
   );
 }
