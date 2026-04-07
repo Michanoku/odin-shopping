@@ -17,7 +17,7 @@ export default function Frontpage() {
   const card = highlight ? (
     <ShopCard key={highlight.id} item={highlight} addItem={addItem} />
   ) : (
-    <div className="loader"></div>
+    <div className="loader" role="status" aria-label="Loading"></div>
   );
   return (
     <div className="frontpage">

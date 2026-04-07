@@ -1,0 +1,54 @@
+import { describe, it, expect, vi } from "vitest";
+import { MemoryRouter, Routes, Route, Outlet } from "react-router-dom";
+import { render, screen } from "@testing-library/react";
+import Frontpage from "../routes/frontpage.jsx";
+
+describe("Frontpage", () => {
+  it("shows loader when no items exist", () => {
+    const items = [];
+    const addItem = vi.fn();
+
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Routes>
+          <Route element={<Outlet context={{ items, addItem }} />}>
+            <Route path="/" element={<Frontpage />} />
+          </Route>
+        </Routes>
+      </MemoryRouter>,
+    );
+
+    const loader = screen.getByRole("status", { name: /loading/i });
+
+    expect(loader).toBeInTheDocument();
+  });
+  it("correctly shows the highlighted item", () => {
+    const items = [
+      { id: 1, title: "T-shirt", category: "clothes", price: 10, image: "" },
+      {
+        id: 2,
+        title: "Harddrive",
+        category: "electronics",
+        price: 50,
+        image: "",
+      },
+      { id: 3, title: "Earring", category: "jewelry", price: 199, image: "" },
+    ];
+    const addItem = vi.fn();
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Routes>
+          <Route element={<Outlet context={{ items, addItem }} />}>
+            <Route path="/" element={<Frontpage />} />
+          </Route>
+        </Routes>
+      </MemoryRouter>,
+    );
+    const item1 = screen.queryByText("T-shirt");
+    const item2 = screen.queryByText("Harddrive");
+    const item3 = screen.queryByText("Earring");
+
+    // check that at least ONE is on the screen
+    expect(item1 || item2 || item3).toBeInTheDocument();
+  });
+});
