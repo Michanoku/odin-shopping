@@ -1,5 +1,5 @@
-import { Menu, ShoppingCart } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Menu, ShoppingCart } from "lucide-react";
 import Search from "./Search.jsx";
 import "../css/NavBar.css";
 

@@ -1,5 +1,5 @@
-import { Sun, Moon, House, Store } from "lucide-react";
 import { NavLink } from "react-router-dom";
+import { Sun, Moon, House, Store } from "lucide-react";
 import "../css/SideBar.css";
 
 // The sidebar that can be hidden or shown on mobile, always visible on desktop

@@ -1,9 +1,8 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import { Outlet } from "react-router-dom";
-
-import "../css/root.css";
 import NavBar from "../components/NavBar.jsx";
 import SideBar from "../components/SideBar.jsx";
+import "../css/root.css";
 
 export default function Root() {
   const [sideBarOpen, setSideBarOpen] = useState(false);
@@ -11,12 +10,17 @@ export default function Root() {
   const [cart, setCart] = useState([]);
   const [items, setItems] = useState([]);
 
+  // Get categories so we can display links for them
   const categories = useMemo(() => {
     return [...new Set(items.map((item) => item.category))];
   }, [items]);
 
+  // useRef so we don't query twice due to strictMode
+  const hasFetched = useRef(false);
   useEffect(() => {
-    // First, get the items from the API. 
+    if (hasFetched.current) return;
+    hasFetched.current = true;
+
     async function fetchItems() {
       try {
         const response = await fetch("https://fakestoreapi.com/products/");
@@ -24,18 +28,16 @@ export default function Root() {
           throw new Error(`Response status: ${response.status}`);
         }
         const result = await response.json();
-        return result;
+        setItems(result);
       } catch (error) {
         console.error(error.message);
       }
     }
-    fetchItems().then((fetchedItems) => {
-      if (fetchedItems) {
-        setItems(fetchedItems);
-      }
-    });
+
+    fetchItems();
   }, []);
 
+  // Add an item to the shopping cart
   function addItem(newItem) {
     setCart((prev) => {
       const existingItem = prev.find((item) => item.id === newItem.id);
@@ -51,22 +53,21 @@ export default function Root() {
     });
   }
 
+  // Remove an item from the shopping cart
   function removeItem(id) {
-    setCart(
-      prev => prev.filter(item => item.id !== id)
-    );
+    setCart((prev) => prev.filter((item) => item.id !== id));
   }
 
+  // Change the amount of an item in the shopping cart
   function changeAmount(oldItem) {
     setCart((prev) => {
       return prev.map((item) =>
-        item.id === oldItem.id
-          ? { ...item, amount: oldItem.amount }
-          : item,
+        item.id === oldItem.id ? { ...item, amount: oldItem.amount } : item,
       );
     });
   }
 
+  // Get the correct theme for this user
   function getTheme() {
     const theme = localStorage.getItem("theme")
       ? localStorage.getItem("theme")
@@ -77,10 +78,12 @@ export default function Root() {
     return theme;
   }
 
+  // Apply a theme
   function applyTheme(newTheme) {
     document.documentElement.className = newTheme;
   }
 
+  // Handle how the theme is set
   function handleSetTheme() {
     const newTheme = theme === "dark" ? "light" : "dark";
     localStorage.setItem("theme", newTheme);
@@ -88,13 +91,17 @@ export default function Root() {
     applyTheme(newTheme);
   }
 
+  // Toggle the side bar open or closed in mobile
   function toggleSideBar() {
     setSideBarOpen((prev) => !prev);
   }
 
   return (
     <div className="rootDiv">
-      <NavBar toggleSideBar={toggleSideBar} counter={cart.filter(item => item.amount > 0).length} />
+      <NavBar
+        toggleSideBar={toggleSideBar}
+        counter={cart.filter((item) => item.amount > 0).length}
+      />
       <SideBar
         isOpen={sideBarOpen}
         theme={theme}
