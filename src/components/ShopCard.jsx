@@ -38,9 +38,13 @@ export default function ShopCard({ item, addItem }) {
       <div className="itemCartOptions">
         <div className="itemPrice">${item.price}</div>
         <div className="itemAmountSelect">
-          <button className="amountButton">
-            <CircleArrowLeft onClick={() => handleAmount("subtract")} />
-          </button>
+        <button
+          className="amountButton"
+          aria-label="subtract"
+          onClick={() => handleAmount("subtract")}
+        >
+          <CircleArrowLeft />
+        </button>
           <input
             type="number"
             step="1"
@@ -49,8 +53,12 @@ export default function ShopCard({ item, addItem }) {
             onBlur={() => handleBlur()}
             onChange={(e) => handleChange(e)}
           />
-          <button className="amountButton">
-            <CircleArrowRight onClick={() => handleAmount("add")} />
+          <button
+            className="amountButton"
+            aria-label="add"
+            onClick={() => handleAmount("add")}
+          >
+            <CircleArrowRight />
           </button>
         </div>
       </div>

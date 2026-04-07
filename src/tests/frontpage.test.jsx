@@ -24,15 +24,27 @@ describe("Frontpage", () => {
   });
   it("correctly shows the highlighted item", () => {
     const items = [
-      { id: 1, title: "T-shirt", category: "clothes", price: 10, image: "" },
+      {
+        id: 1,
+        title: "T-shirt",
+        category: "clothes",
+        price: 10,
+        image: "https://via.placeholder.com/150",
+      },
       {
         id: 2,
         title: "Harddrive",
         category: "electronics",
         price: 50,
-        image: "",
+        image: "https://via.placeholder.com/150",
       },
-      { id: 3, title: "Earring", category: "jewelry", price: 199, image: "" },
+      {
+        id: 3,
+        title: "Earring",
+        category: "jewelry",
+        price: 199,
+        image: "https://via.placeholder.com/150",
+      },
     ];
     const addItem = vi.fn();
     render(

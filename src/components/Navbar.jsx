@@ -11,6 +11,8 @@ export default function NavBar({ toggleSideBar, counter }) {
         className="sideBarToggle svgButton"
         type="button"
         onClick={() => toggleSideBar()}
+        aria-label="Toggle sidebar"
+        aria-controls="sidebar"
       >
         <Menu size={32} />
       </button>
@@ -18,7 +20,7 @@ export default function NavBar({ toggleSideBar, counter }) {
       <Search />
       <Link className="cartLink svgButton" to="cart/">
         <ShoppingCart size={32} />
-        <span className={`itemCounter ${counter > 0 ? "show" : ""}`}>
+        <span data-testid="cart-counter" className={`itemCounter ${counter > 0 ? "show" : ""}`}>
           {counter}
         </span>
       </Link>
