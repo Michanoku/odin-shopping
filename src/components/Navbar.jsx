@@ -1,10 +1,11 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, ShoppingCart } from "lucide-react";
 import Search from "./Search.jsx";
 import "../css/NavBar.css";
 
 // The navbar that holds the toggle button for mobile, the title and the cart button and counter
-export default function NavBar({ toggleSideBar, counter }) {
+export default function NavBar({ isDesktop, isOpen, toggleSideBar, counter }) {
   return (
     <div className="navBar">
       <button
@@ -13,6 +14,8 @@ export default function NavBar({ toggleSideBar, counter }) {
         onClick={() => toggleSideBar()}
         aria-label="Toggle sidebar"
         aria-controls="sidebar"
+        aria-expanded={isOpen}
+        aria-hidden={isDesktop}
       >
         <Menu size={32} />
       </button>

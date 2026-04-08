@@ -5,14 +5,15 @@
   gap: 1rem;
   grid-template-rows: repeat(3, auto);
   grid-template-columns: repeat(3, 1fr);
-  grid-template-areas: "title title title" ". card ." "subtitle subtitle subtitle";
   /* Mobile */
   height: calc(100dvh - 7.75rem);
+  grid-template-areas: "title title title" "card card card" "subtitle subtitle subtitle";
 }
 @media screen and (min-width: 992px) {
   /* Desktop */
   .frontpage {
     height: 100%;
+    grid-template-areas: "title title title" ". card ." "subtitle subtitle subtitle";
   }
 }
 

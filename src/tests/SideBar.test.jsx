@@ -16,7 +16,7 @@ describe("SideBar", () => {
           handleSetTheme={vi.fn()}
           categories={categories}
         />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
     // Check that Home and Shop links exist
@@ -25,7 +25,9 @@ describe("SideBar", () => {
 
     // Check that all category links exist and are properly capitalized
     categories.forEach((category) => {
-      const link = screen.getByText(category.charAt(0).toUpperCase() + category.slice(1));
+      const link = screen.getByText(
+        category.charAt(0).toUpperCase() + category.slice(1),
+      );
       expect(link).toBeInTheDocument();
     });
   });
@@ -42,7 +44,7 @@ describe("SideBar", () => {
           handleSetTheme={handleSetTheme}
           categories={categories}
         />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
     const themeButton = screen.getByRole("button");

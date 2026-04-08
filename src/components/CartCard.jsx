@@ -45,8 +45,12 @@ export default function CartCard({ cartItem, item, removeItem, changeAmount }) {
       <div className="itemCartOptions">
         <div className="itemPrice">${item.price}</div>
         <div className="itemAmountSelect">
-          <button className="amountButton">
-            <CircleArrowLeft onClick={() => handleAmount("subtract")} />
+          <button
+            className="amountButton"
+            aria-label="subtract"
+            onClick={() => handleAmount("subtract")}
+          >
+            <CircleArrowLeft />
           </button>
           <input
             type="number"
@@ -56,8 +60,12 @@ export default function CartCard({ cartItem, item, removeItem, changeAmount }) {
             onBlur={handleBlur}
             onChange={(e) => handleChange(e)}
           />
-          <button className="amountButton">
-            <CircleArrowRight onClick={() => handleAmount("add")} />
+          <button
+            className="amountButton"
+            aria-label="add"
+            onClick={() => handleAmount("add")}
+          >
+            <CircleArrowRight />
           </button>
         </div>
       </div>

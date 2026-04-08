@@ -3,9 +3,16 @@ import { Sun, Moon, House, Store } from "lucide-react";
 import "../css/SideBar.css";
 
 // The sidebar that can be hidden or shown on mobile, always visible on desktop
-export default function SideBar({ isOpen, theme, handleSetTheme, categories }) {
+export default function SideBar({
+  isDesktop,
+  isOpen,
+  theme,
+  handleSetTheme,
+  categories,
+}) {
   // Show the correct icon based on the current theme
   const Icon = theme === "dark" ? Moon : Sun;
+  const isVisible = isDesktop || isOpen;
 
   // Categories are stored in lower case in the api, so uppercase the first character
   function getCategory(category) {
@@ -13,7 +20,12 @@ export default function SideBar({ isOpen, theme, handleSetTheme, categories }) {
   }
 
   return (
-    <div className={`sideBar ${isOpen ? "open" : ""}`}>
+    <nav
+      className={`sideBar ${isVisible ? "open" : ""}`}
+      aria-hidden={!isVisible}
+      data-visible={isVisible}
+      aria-label="Main navigation"
+    >
       <div className="links">
         <NavLink
           to="/"
@@ -45,6 +57,6 @@ export default function SideBar({ isOpen, theme, handleSetTheme, categories }) {
       <button className="themeButton" onClick={() => handleSetTheme()}>
         <Icon size={32} />
       </button>
-    </div>
+    </nav>
   );
 }

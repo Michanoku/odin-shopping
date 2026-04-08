@@ -1,8 +1,9 @@
 import { describe, it, expect, vi } from "vitest";
-import { MemoryRouter, Routes, Route, Outlet } from "react-router-dom";
 import { render, screen } from "@testing-library/react";
+import { MemoryRouter, Routes, Route, Outlet } from "react-router-dom";
 import Frontpage from "../routes/frontpage.jsx";
 
+// Check if the frontpage behaves correctly
 describe("Frontpage", () => {
   it("shows loader when no items exist", () => {
     const items = [];
@@ -19,7 +20,6 @@ describe("Frontpage", () => {
     );
 
     const loader = screen.getByRole("status", { name: /loading/i });
-
     expect(loader).toBeInTheDocument();
   });
   it("correctly shows the highlighted item", () => {

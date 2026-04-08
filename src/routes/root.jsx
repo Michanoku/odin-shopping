@@ -4,11 +4,29 @@ import NavBar from "../components/NavBar.jsx";
 import SideBar from "../components/SideBar.jsx";
 import "../css/root.css";
 
+
+// Create a hook to check screensize and decide to hide or show the togglebutton
+function useIsDesktop() {
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 992);
+
+  useEffect(() => {
+    function handleResize() {
+      setIsDesktop(window.innerWidth >= 992);
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return isDesktop;
+}
+
 export default function Root() {
   const [sideBarOpen, setSideBarOpen] = useState(false);
   const [theme, setTheme] = useState(getTheme());
   const [cart, setCart] = useState([]);
   const [items, setItems] = useState([]);
+  const isDesktop = useIsDesktop();
 
   // Get categories so we can display links for them
   const categories = useMemo(() => {
@@ -99,10 +117,13 @@ export default function Root() {
   return (
     <div className="rootDiv">
       <NavBar
+        isDesktop={isDesktop}
+        isOpen={sideBarOpen}
         toggleSideBar={toggleSideBar}
         counter={cart.filter((item) => item.amount > 0).length}
       />
       <SideBar
+        isDesktop={isDesktop}
         isOpen={sideBarOpen}
         theme={theme}
         handleSetTheme={handleSetTheme}

@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
-import { MemoryRouter, Routes, Route, Outlet } from "react-router-dom";
 import { render, screen } from "@testing-library/react";
+import { MemoryRouter, Routes, Route, Outlet } from "react-router-dom";
 import Cart from "../routes/cart.jsx";
 
 const items = [
@@ -59,6 +59,7 @@ const cart = [
   { id: 5, amount: 3 },
 ];
 
+// Test if the card behaves correctly
 describe("Cart", () => {
   it("shows all items in the cart", () => {
     render(
@@ -75,18 +76,22 @@ describe("Cart", () => {
       </MemoryRouter>,
     );
 
+    // Set items that should be in the card and not in the cart
     const inCart = ["Jeans", "Earring"];
     const notInCart = ["T-shirt", "Harddrive", "Laptop", "Necklace"];
 
+    // Check that items are in the cart correctly
     inCart.forEach((item) => {
       const itemElement = screen.queryByText(item);
       expect(itemElement).toBeInTheDocument();
     });
+    // Check that items are not in the cart correctly
     notInCart.forEach((item) => {
       const itemElement = screen.queryByText(item);
       expect(itemElement).not.toBeInTheDocument();
     });
   });
+
   it("shows correct amounts", () => {
     render(
       <MemoryRouter initialEntries={["/cart/"]}>
@@ -102,11 +107,13 @@ describe("Cart", () => {
       </MemoryRouter>,
     );
 
+    // Set the items in the cart
     const inCart = [
       { name: "Jeans", amount: "1" },
       { name: "Earring", amount: "3" },
     ];
 
+    // Check that each item has the correct amount in the cart
     inCart.forEach((item) => {
       const titleElement = screen.queryByText(item.name);
       const parent = titleElement.closest(".itemCard");
