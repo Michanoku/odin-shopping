@@ -80,6 +80,7 @@ describe("Shop", () => {
       expect(itemElement).toBeInTheDocument();
     });
   });
+
   it("shows the correct category items on the page", () => {
     render(
       <MemoryRouter initialEntries={["/shop/electronics/"]}>
@@ -103,6 +104,7 @@ describe("Shop", () => {
       expect(itemElement).not.toBeInTheDocument();
     });
   });
+  
   it("shows correct search result on shop page", () => {
     render(
       <MemoryRouter initialEntries={["/shop/?q=ri"]}>
